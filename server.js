@@ -14,6 +14,18 @@ const
     usersRouter = require('./routes/users.js')
     PORT = 3000;
 
+const
+port = process.env.PORT || 3000,
+	mongoConnectionString = process.env.MONGODB_URI || 'mongodb://localhost/wayfarer'
+
+mongoose.connect(mongoConnectionString, (err) => {
+    console.log(err || "Connected to MongoDB (wayfarer)")
+})
+
+const store = new MongoDBStore({
+    uri: mongoConnectionString,
+    collection: 'sessions'
+      });
 
 app.use(logger('dev'));
 app.use(cookieParser()); 
@@ -26,6 +38,26 @@ app.use(express.json());
 //   // ejs configuration
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
+
+app.use(session({
+	secret: "cupcake13", //created random string
+	cookie: { maxAge: 600000 },
+	resave: true,
+	saveUninitialized: false,
+	store: store
+
+}));
+
+//Initizing password middleware
+app.use(passport.initialize()); //Step 3
+app.use(passport.session()); //Step 4
+
+app.use((req, res, next) => {
+	app.locals.currentUser = req.user;
+	app.locals.loggedIn = !!req.user
+
+	next();
+});
 
 
 //root route
