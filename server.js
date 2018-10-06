@@ -14,18 +14,24 @@ const
     usersRouter = require('./routes/users.js')
     PORT = 3000;
 
-app.use(express.json()),
+
+app.use(logger('dev'));
+app.use(cookieParser()); 
+app.use(express.urlencoded({extended: true})); 
+app.use(flash()); 
+app.use(methodOverride('_method'));
+app.use(express.json());
 
 
-// environment port
-// const
-// 	port = process.env.PORT || 3000,
-// 	mongoConnectionString = process.env.MONGODB_URI || 'mongodb://localhost/wayfarer'
+//   // ejs configuration
+app.set('view engine', 'ejs')
+app.use(ejsLayouts)
 
-// // mongoose connection
-// mongoose.connect(mongoConnectionString, (err) => {
-// 	console.log(err || "Connected to MongoDB (passport-authentication)")
-// })
+
+//root route
+app.get('/', (req,res) => {
+	res.render('index')
+})
 
 app.listen(PORT, err => {
     console.log(err || `Server is listening on port ${PORT}`);
