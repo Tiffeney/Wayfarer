@@ -4,8 +4,8 @@ const
     User = require('../models/User');
 
     //creating a session key cookie
-    passport.serializeUser((user, done) => {
-        done(null, user.id);
-    });
+    // passport.serializeUser((user, done) => {
+    //     done(null, user.id);
+    // });
     
  

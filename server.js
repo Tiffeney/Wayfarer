@@ -1,17 +1,18 @@
 const
-express = require('express'),
-app = express(),
-ejsLayouts = require('express-ejs-layouts'),
-mongoose = require('mongoose'),
-flash = require('connect-flash'),
-logger = require('morgan'),
-cookieParser = require('cookie-parser'),
-session = require('express-session'),
-MongoDBStore = require('connect-mongodb-session')(session),
-passport = require('passport'),
-passportConfig = require('./config/passport'),
-methodOverride = require('method-override')
-PORT = 3000;
+    express = require('express'),
+    app = express(),
+    ejsLayouts = require('express-ejs-layouts'),
+    mongoose = require('mongoose'),
+    flash = require('connect-flash'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    MongoDBStore = require('connect-mongodb-session')(session),
+    passport = require('passport'),
+    passportConfig = require('./config/passport'),
+    methodOverride = require('method-override'),
+    usersRouter = require('./routes/users.js')
+    PORT = 3000;
 
 app.use(express.json()),
 
