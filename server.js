@@ -51,6 +51,7 @@ app.use(session({
 //Initizing password middleware
 app.use(passport.initialize()); //Step 3
 app.use(passport.session()); //Step 4
+app.use('users', usersRouter)
 
 app.use((req, res, next) => {
 	app.locals.currentUser = req.user;
