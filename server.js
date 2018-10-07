@@ -65,6 +65,8 @@ app.get('/', (req,res) => {
 	res.render('index')
 })
 
+app.use('/users', usersRouter)
+
 app.listen(PORT, err => {
     console.log(err || `Server is listening on port ${PORT}`);
 })
