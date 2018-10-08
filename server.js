@@ -11,7 +11,8 @@ const
     passport = require('passport'),
     passportConfig = require('./config/passport'),
     methodOverride = require('method-override'),
-    usersRouter = require('./routes/users.js')
+    usersRouter = require('./routes/users.js'),
+    citiesRouter = require('./routes/citiesRouter'),
     PORT = 3000;
 
 const
@@ -33,7 +34,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(flash()); 
 app.use(methodOverride('_method'));
 app.use(express.json());
-
 
 //   // ejs configuration
 app.set('view engine', 'ejs')
@@ -67,6 +67,8 @@ app.get('/', (req,res) => {
 })
 
 app.use('/users', usersRouter)
+
+app.use('/cities', citiesRouter )
 
 app.listen(PORT, err => {
     console.log(err || `Server is listening on port ${PORT}`);

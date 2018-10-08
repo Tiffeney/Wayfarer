@@ -30,10 +30,7 @@ usersRouter.get('/profile', isLoggedIn, (req, res) => { //Step 2
 });
 
 usersRouter.patch('/profile', isLoggedIn, (req, res) => {
-// checking to see if the request body has a truthy password (meaning they are trying to change their password)
-// If not, remove it from the rewuest body so that our app doesn't try to has an empty password string.
   if (!req.body.password) delete req.body.password;
-  //Take the remaining key/value pairs from the request body, and merge them into the current object.
   Object.assign(req.user, req.body);
   req.user.save((err, updatedUser) => {
     if (err) return console.log(err);
@@ -46,7 +43,6 @@ usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
 })
 
 usersRouter.get('/logout', (req, res) => { //Step 3
-  //Destroy the session, and redirect the user back to the homepage
   req.logout();
   res.redirect('/');
 })
