@@ -37,9 +37,9 @@ exports.update = (req, res) => {
 
 
 // DELETE CITY
-// exports.delete = (req, res) => {
-//     City.findByIdAndDelete(req.params.id, req.body, (err, deletecity) => {
-//         if (err) res.json({ success: false, err });
-//         res.json({ success: true, payload: city });
-//     })
-// }
+exports.delete = (req, res) => {
+    City.findByIdAndDelete(req.params.id, (err, deletedCity) => {
+        if (err) res.json({ success: false, err });
+        res.json({ success: true, payload: deletedCity });
+    })
+}

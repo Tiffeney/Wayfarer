@@ -11,6 +11,6 @@ router.get('/:id', City.show);
 router.put('/:id', City.update);
 
 // // Delete City
-// router.get('/:id', City.delete)
+router.delete('/:id', City.delete)
 
 module.exports = router
