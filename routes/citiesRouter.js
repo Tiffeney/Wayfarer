@@ -6,10 +6,11 @@ const City = require('../controllers/citiesController')
 router.get('/', City.index);
 router.post('/', City.create);
 // Show City
-// router.get('/', City.show);
+router.get('/:id', City.show);
 // // Update City
-// router.get('/', City.put)
+router.put('/:id', City.update);
+
 // // Delete City
-// router.get('/', City.delete)
+// router.get('/:id', City.delete)
 
 module.exports = router

@@ -20,6 +20,26 @@ exports.create = (req, res) => {
 
 // SHOW ONE CITY
 
-// UPDATE CITY
+exports.show = (req, res) => {
+    City.findById(req.params.id, (err, city) => {
+        if (err) res.json({ success: false, err});
+        res.json({ success: true, payload: city });
+    })
+}
+
+// // UPDATE CITY
+exports.update = (req, res) => {
+    City.findByIdAndUpdate(req.params.id, req.body, (err, city) => {
+        if (err) res.json({ success: false, err});
+        res.json({ success: true, payload: city });
+    })
+}
+
 
 // DELETE CITY
+// exports.delete = (req, res) => {
+//     City.findByIdAndDelete(req.params.id, req.body, (err, deletecity) => {
+//         if (err) res.json({ success: false, err });
+//         res.json({ success: true, payload: city });
+//     })
+// }

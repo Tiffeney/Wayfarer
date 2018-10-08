@@ -10,7 +10,6 @@ const postSchema = new mongoose.Schema({
 const citySchema = new mongoose.Schema({
     name: String,
     picture: String,
-    city: String,
     posts: [postSchema]
 })
 
