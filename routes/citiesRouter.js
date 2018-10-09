@@ -18,6 +18,7 @@ router.delete('/:city_id', City.delete)
 //Get All Post
 router.post('/:city_id/posts', Post.createPost) // create a post
 router.get('/:city_id/posts/', Post.showAllPosts); //show all posts for a city
+// router.get('/:city_id/posts/new') //Form for creating new post.
 // router.get('/:city_id/posts/:id', Post.showPost); //show Single Post for a city
 router.patch('/:city_id/posts/:id', Post.updatePost); //update a post by id
 router.delete('/:city_id/posts/:id', Post.deletePost); //delete a post by id

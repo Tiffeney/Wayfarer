@@ -4,8 +4,8 @@ const City = require('../models/City')
 exports.index = (req, res) => {
     City.find({}, (err, cities) => {
         if (err) res.json({ success: false, err});
-        res.json({ success: true, payload: cities });
-        // res.render('cities/index', { success: true, payload: cities})
+        // res.json({ success: true, payload: cities });
+        res.render('cities/index', { success: true, cities})
     })
 };
 
