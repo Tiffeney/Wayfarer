@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
-    name: String, 
-    country: String,
-    image: String,
-    user: {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
+    title: String, 
+    body: String,
+    author: {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
 })
 
 const citySchema = new mongoose.Schema({

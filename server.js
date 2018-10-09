@@ -13,6 +13,7 @@ const
     methodOverride = require('method-override'),
     usersRouter = require('./routes/users.js'),
     citiesRouter = require('./routes/citiesRouter'),
+    // postsRouter = require('./routes/citiesRouter'),
     PORT = 3000;
 
 const
@@ -62,12 +63,11 @@ app.use((req, res, next) => {
 
 
 //root route
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
 	res.render('index')
 })
 
 app.use('/users', usersRouter)
-
 app.use('/cities', citiesRouter )
 
 app.listen(PORT, err => {
