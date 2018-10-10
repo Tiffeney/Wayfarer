@@ -1,6 +1,7 @@
 const
   express = require('express'),
   usersRouter = new express.Router(),
+  User = require('../controllers/userController'),
   passport = require('passport')
 
 // render login view
@@ -23,12 +24,6 @@ usersRouter.post('/signup', passport.authenticate('local-signup', { //Step 4
   failureRedirect: "/users/signup"
 }));
 
-
-usersRouter.get('/profile', isLoggedIn, (req, res) => { //Step 2
-  //Renders the user profile, only if they are currently login
-  res.render('profile', { user: req.user });
-});
-
 usersRouter.patch('/profile', isLoggedIn, (req, res) => {
   if (!req.body.password) delete req.body.password;
   Object.assign(req.user, req.body);
@@ -45,7 +40,10 @@ usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
 usersRouter.get('/logout', (req, res) => { //Step 3
   req.logout();
   res.redirect('/');
-})
+});
+
+usersRouter.get('/profile', isLoggedIn, User.show);
+usersRouter.get('/:id', isLoggedIn, User.show);
 
   //A method used to authorize a user BEFORE allowing them to proceed to the profile page. Adding Middleware
 function isLoggedIn(req, res, next) { //Step 1
