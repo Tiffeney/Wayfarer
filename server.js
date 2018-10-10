@@ -13,7 +13,6 @@ const
     methodOverride = require('method-override'),
     usersRouter = require('./routes/users.js'),
     citiesRouter = require('./routes/citiesRouter'),
-    // postsRouter = require('./routes/citiesRouter'),
     PORT = 3000;
 
 const
@@ -35,6 +34,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(flash()); 
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use(express.static('public'))
 
 //   // ejs configuration
 app.set('view engine', 'ejs')

@@ -4,21 +4,18 @@
     <title>Wayfarer - Project 3</title>
      <!-- Compiled and minified CSS -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <link rel="stylesheet" href="/stylesheets/main.css">
      <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
              
 </head>
 <body>
-    <div class="container">
-        <% if (loggedIn){ %>
-            <span>Logged in as:</span><a href="/users/profile"><%= currentUser.name %></a>
-            <a href="/users/profile/edit">Edit Profile</a>
-        <% } else { %>
-            <a href="/users/login">Log In</a>
-            <a href="/users/signup">Sign Up</a>
-        <% } %>
+    <!-- <div class="container"> -->
+            <% include ./partials/navbar %>
+           
+    
         <%- body %>
+        
     </div>
 </body>
 </html>
