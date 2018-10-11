@@ -70,7 +70,7 @@ exports.showAllPost = (req, res) => {
             if (err) res.json({ success: false, err })
             // let a = {fruit:"apple"}
             // let b = {color:"green"}
-            city.posts.push = {...req.body, author:req.user} //When adding through the site
+            city.posts.push({...req.body, author: req.user._id}) //When adding through the site
             // let post = {...req.body, author:"5bb9595c1a77b1d710e74837"} //When adding via POSTMan 
             // city.posts.push(post);
             city.save((err, city) => {
@@ -88,12 +88,13 @@ exports.showAllPost = (req, res) => {
      };
     
     exports.editPost = (req, res) => {
+        // if (!req.user) res.json({ success: false, payload: "Welcome, You are now logged in!"})
         let { city_id, post_id } = req.params;
         City.findById(city_id, (err, city) => {
         if (err) res.json({success: false, payload: err});
         let post = city.posts.id(post_id);
         if (post) {
-            res.render('posts/edit', { post, city_id});
+            res.render('posts/edit', { post, city_id, post_id});
         }else {
             res.json({ success: false, payload: "Post does not exist."});
         }
@@ -104,34 +105,35 @@ exports.showAllPost = (req, res) => {
     exports.updatePost = (req, res) => {
     let { city_id, post_id } = req.params;
     let { body } = req;
-    City.findById(city_id, (err, updatepost) => {
+    City.findById(city_id, (err, city) => {
         if (err) res.json({ success: false, err });
-        let post =  city.posts.id(post_id)
+        let post =  city.posts.id(post_id) 
+        if (post) {
             for (let key in body) { post[key] = body[key]}
-            updatepost.save((err, updatepost) => {
+            city.save((err, city) => {
                 if (err) res.json({ success: false, err});
                 // res.json({ success: true, payload: city })
                 // res.render(`/cities/${city_id}/posts/${post_id}`);
-                res.redirect(`/cities/${city_id}/posts/${post_id}`)
-
-            })
+                res.redirect(`/cities/${city_id}`)
+        
+        })
+    }
     })
 };
 
 exports.deletePost = (req, res) => {
-    let { city_id, id } = req.params;
+    let { city_id, post_id } = req.params;
     City.findById(city_id, (err, city) => {
         if (err) res.json({ success: false, err });
-
-        let post = city.posts.id(id);
+        let post = city.posts.id(post_id);
         if (post) {
             post.remove();
             city.save((err, city) => {
                 if (err) res.json({ success: false, err });
-                res.json({ success: true, payload: city });
+                res.redirect(`/cities/${city_id}`);
             })
         } else {
-            res.json({ success: false, payload: "Post does not exist." })
+            res.json({ success: false, payload: "Post does not exist." });
         }
     })
 }

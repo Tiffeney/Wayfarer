@@ -5,7 +5,9 @@
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4"><%= city.name %><i class="material-icons right"></i></span>
-          <a href="/cities/<%= city._id %>/posts/new" button class="waves-effect waves-light btn">Add Post</button></a>
+          <% if (loggedIn) { %>
+            <a href="/cities/<%= city._id %>/posts/new" button class="waves-effect waves-light btn">Add Post</button></a>
+          <% } %>
 
         </div>
         <div class="card-reveal">
@@ -23,10 +25,15 @@
           <span class="card-title"><%= p.title %></span>
           <p><%= p.body %></p>
         </div>
+        <!-- IF LOGGED IN RENDER &  -->
+        <% if (loggedIn && String(p.author) == String(currentUser._id) ) { %>
         <div class="card-action">
-                <a href="/cities/<%= city._id %>/posts/<%= p._id %>/edit">Edit</a>
-                <a href="#">Delete</a>
+            <a href="/cities/<%= city._id %>/posts/<%= p._id %>/edit">Edit</a>
+            <form method="post" action="/cities/<%= city._id%>/posts/<%= p._id%>?_method=DELETE">
+                <button class="btn btn-danger btn-block" type="submit">Delete</button>
+            </form>
         </div>
+        <% } %>
       </div>
     </div>
     <% }) %>

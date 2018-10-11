@@ -1,7 +1,7 @@
 <div class="container">
         <h1>Edit A post!</h1>
         <div class="row">
-          <form class="col s12" method="post" action="/cities/<%= city_id %>/posts/>
+          <form class="col s12" method="post" action="/cities/<%= city_id %>/posts/<%= post_id%>?_method=PUT">
             <div class="row">
               <div class="input-field col s12">
                 <textarea name="title" id="textarea1" class="materialize-textarea"></textarea>
@@ -16,5 +16,5 @@
                     </div>
                 </div>
             </form>
-          </div>
         </div>
+</div>
