@@ -16,12 +16,13 @@ router.delete('/:city_id', City.delete)
 
 
 //Get All Post
-router.post('/:city_id/posts', Post.createPost) // create a post
-router.get('/:city_id/posts/', Post.showAllPosts); //show all posts for a city
-// router.get('/:city_id/posts/new') //Form for creating new post.
-// router.get('/:city_id/posts/:id', Post.showPost); //show Single Post for a city
-router.patch('/:city_id/posts/:id', Post.updatePost); //update a post by id
-router.delete('/:city_id/posts/:id', Post.deletePost); //delete a post by id
+router.post('/:city_id/posts', City.createPost); // create a post
+router.get('/:city_id/posts/new', City.newPost); //Form for creating new post.
+router.get('/:city_id/posts/', City.showAllPost); //show all posts for a city
+router.get('/:city_id/posts/:post_id/edit', City.editPost);
+// router.get('/:city_id/posts/:id', City.showPost); //show Single Post for a city
+router.patch('/:city_id/posts/:id', City.updatePost); //update a post by id
+router.delete('/:city_id/posts/:id', City.deletePost); //delete a post by id
 
 
 module.exports = router
