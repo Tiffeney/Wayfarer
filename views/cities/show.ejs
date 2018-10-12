@@ -28,10 +28,10 @@
         <!-- IF LOGGED IN RENDER &  -->
         <% if (loggedIn && String(p.author) == String(currentUser._id) ) { %>
         <div class="card-action">
-            <p><a href="/cities/<%= city._id %>/posts/<%= p._id %>">Show</a></p>
+            <p><a href="/cities/<%= city._id %>/posts/<%= p._id %>">Show</a>
             <a href="/cities/<%= city._id %>/posts/<%= p._id %>/edit">Edit</a>
             <form method="post" action="/cities/<%= city._id%>/posts/<%= p._id%>?_method=DELETE">
-                <button class="btn btn-danger btn-block" type="submit">Delete</button>
+                <button class="btn btn-danger btn-block" type="submit">Delete</button></p>
             </form>
         </div>
         <% } %>
