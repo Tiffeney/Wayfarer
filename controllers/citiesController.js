@@ -4,7 +4,7 @@ const City = require('../models/City')
 exports.index = (req, res) => {
     City.find({}, (err, cities) => {
         if (err) res.json({ success: false, err});
-        // res.json({ success: true, payload: cities });
+        //res.json({ success: true, payload: cities });
         res.render('cities/index', { success: true, cities})
     })
 };
@@ -50,16 +50,16 @@ exports.delete = (req, res) => {
 //POST CONTROLLER
 
 // GET ALL POST FOR A CITY
-exports.showAllPost = (req, res) => {
-    let { city_id, id } = req.params;
-    console.log('Showing all post')
-    City.findById(city_id, (err, city) => {
-        let post = city.posts.id(id)
-        if (err) res.json({ success: false, err});
-        res.render('/posts/show', { success: true, city: post });
+// exports.showAllPost = (req, res) => {
+//     let { city_id, id } = req.params;
+//     console.log('Showing all post')
+//     City.findById(city_id, (err, city) => {
+//         let post = city.posts.id(id)
+//         if (err) res.json({ success: false, err});
+//         res.render('/posts/show', { success: true, city: post });
         
-    })
-};
+//     })
+// };
 
 
     exports.createPost = (req, res) => {
@@ -80,6 +80,22 @@ exports.showAllPost = (req, res) => {
             })
         })
     }
+
+    exports.showPost = (req, res) => {
+        let { city_id, post_id } = req.params;
+        console.log('Showing Id post')
+        City.findById(city_id, (err, city) => {
+            if (err) res.json({ success: false, err});
+    
+            if (city.posts.id(post_id)) {
+                let post = city.posts.id(post_id)
+                res.render('posts/show', { success: true, payload: post, city_id, post_id });
+            }else {
+            // if (err) res.json({ success: false, err});
+            res.json ({ success: false, payload: "Post doesn't exist" });
+            }
+        })
+    };
 
     exports.newPost = (req, res) => {
         let { city_id, id } = req.params;
