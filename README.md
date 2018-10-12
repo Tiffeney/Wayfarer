@@ -7,12 +7,19 @@ We have been commissioned to build a travel community, code-named Project Wayfar
 
 # Technologies Used
 Node Js
+<br>
 HTML
+<br>
 CSS
+<br>
 Express
+<br>
 Mongo
+<br>
 Mongoose
+<br>
 MongooseDB
+<br>
 Materialize
 
 # Screenshot
