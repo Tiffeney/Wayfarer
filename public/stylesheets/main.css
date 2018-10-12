@@ -43,3 +43,16 @@ nav {
     padding: 15px; 
 }
     
+.col-sm-4 {
+    background-color: white;
+    margin-top: 115px;
+    border-radius: 30px;
+    padding: 15px; 
+}
+
+.col-sm-3 {
+    background-color: white;
+    margin-top: 115px;
+    border-radius: 30px;
+    padding: 15px; 
+}
