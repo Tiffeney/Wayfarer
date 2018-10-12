@@ -5,7 +5,7 @@
 ## Objective
 We have been commissioned to build a travel community, code-named Project Wayfarer for now, for users to share tips (AKA posts) about their favorite locations around the world.
 
-## Technologies Used
+# Technologies Used
 Node Js
 HTML
 CSS
@@ -15,7 +15,7 @@ Mongoose
 MongooseDB
 Materialize
 
-##Screenshot
+# Screenshot
 (<a href="https://imgur.com/SIRNcHA"><img src="https://i.imgur.com/SIRNcHA.png" title="source: imgur.com" /></a>)
 (<a href="https://imgur.com/FyDWzTu"><img src="https://i.imgur.com/FyDWzTu.png" title="source: imgur.com" /></a>)
 (<a href="https://imgur.com/zhHrFl2"><img src="https://i.imgur.com/zhHrFl2.png" title="source: imgur.com" /></a>)
