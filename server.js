@@ -14,12 +14,9 @@ const
     passportConfig = require('./config/passport'),
     methodOverride = require('method-override'),
     usersRouter = require('./routes/users.js'),
-    citiesRouter = require('./routes/citiesRouter'),
-    PORT = 3000;
+    citiesRouter = require('./routes/citiesRouter');
 
-const
-port = process.env.PORT || 3000,
-	mongoConnectionString = process.env.MONGODB_URI || 'mongodb://localhost/wayfarer'
+const mongoConnectionString = process.env.MONGODB_URI || 'mongodb://localhost/wayfarer'
 
 mongoose.connect(mongoConnectionString, (err) => {
     console.log(err || "Connected to MongoDB (wayfarer)")
@@ -72,6 +69,6 @@ app.get('/', (req, res) => {
 app.use('/users', usersRouter)
 app.use('/cities', citiesRouter )
 
-app.listen(PORT, err => {
-    console.log(err || `Server is listening on port ${PORT}`);
+app.listen(process.env.PORT, err => {
+    console.log(err || `Server is listening on port ${process.env.PORT}`);
 })
