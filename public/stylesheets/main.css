@@ -7,7 +7,7 @@ body {
 
 nav {
     color: #fff;
-    background-color: #80deea;
+    background-color:#18ffff;
     width: 100%;
     height: 56px;
     line-height: 56px;
@@ -30,6 +30,13 @@ nav {
 }
 
 .col-sm-5 {
+    background-color: white;
+    margin-top: 115px;
+    border-radius: 30px;
+    padding: 15px; 
+}
+
+.col-sm-7 {
     background-color: white;
     margin-top: 115px;
     border-radius: 30px;
